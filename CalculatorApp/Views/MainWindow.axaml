@@ -3,11 +3,12 @@
         xmlns:vm="using:CalculatorApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="450"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650"
         x:Class="CalculatorApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="CalculatorApp">
+        Title="CalculatorApp"
+        Background="#0e1111">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -15,6 +16,83 @@
         <vm:MainWindowViewModel/>
     </Design.DataContext>
 
-    <TextBlock Text="{Binding Greeting}" HorizontalAlignment="Center" VerticalAlignment="Center"/>
+    <Grid ColumnDefinitions="25*,25*,25*,25*"
+          RowDefinitions="25*,15*,15*,15*,15*,15*"
+          Margin="5">
+
+        <TextBlock Text="15000"
+                   Grid.Column="0" Grid.ColumnSpan="4"
+                   Grid.Row="0" Foreground="White"
+                   FontSize="75" FontWeight="Medium"
+                   HorizontalAlignment="Right"
+                   VerticalAlignment="Bottom"
+                   Margin="0,0,10,0"/>    
+        
+        <Button Classes="circular"
+                Grid.Row="1" Grid.Column="0" 
+                Content="AC" FontSize="35" Background="#414a4c"/>
+        <Button Classes="circular"
+                Grid.Row="1" Grid.Column="1" 
+                Content="±" FontSize="40" Background="#414a4c"/>
+        <Button Classes="circular"
+                Grid.Row="1" Grid.Column="2" 
+                Content="%" FontSize="40" Background="#414a4c"/>
+        <Button Classes="circular"
+                Grid.Row="1" Grid.Column="3" 
+                Content="÷" FontSize="40" Background="#e76822"/>
+
+        <Button Classes="circular"
+                Grid.Row="2" Grid.Column="0" 
+                Content="7" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="2" Grid.Column="1" 
+                Content="8" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="2" Grid.Column="2" 
+                Content="9" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="2" Grid.Column="3" 
+                Content="×" FontSize="40" Background="#e76822"/>
+        
+        <Button Classes="circular"
+                Grid.Row="3" Grid.Column="0" 
+                Content="4" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="3" Grid.Column="1" 
+                Content="5" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="3" Grid.Column="2" 
+                Content="6" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="3" Grid.Column="3" 
+                Content="−" FontSize="40" Background="#e76822"/>
+        
+        <Button Classes="circular"
+                Grid.Row="4" Grid.Column="0" 
+                Content="1" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="4" Grid.Column="1" 
+                Content="2" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="4" Grid.Column="2" 
+                Content="3" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="4" Grid.Column="3" 
+                Content="+" FontSize="40" Background="#e76822"/>
+
+        <Button Classes="circular"
+                Grid.Row="5" Grid.Column="0" 
+                Content="U" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="5" Grid.Column="1" 
+                Content="0" FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="5" Grid.Column="2" 
+                Content="," FontSize="40"/>
+        <Button Classes="circular"
+                Grid.Row="5" Grid.Column="3" 
+                Content="=" FontSize="40" Background="#e76822"/>
+        
+    </Grid>
 
 </Window>
