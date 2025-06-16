@@ -3,7 +3,7 @@
         xmlns:vm="using:CalculatorApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650" CanResize="False"
         x:Class="CalculatorApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
@@ -20,10 +20,10 @@
           RowDefinitions="25*,15*,15*,15*,15*,15*"
           Margin="5">
 
-        <TextBlock Text="15000"
+        <TextBlock Text="{Binding Display}"
                    Grid.Column="0" Grid.ColumnSpan="4"
                    Grid.Row="0" Foreground="White"
-                   FontSize="75" FontWeight="Medium"
+                   FontSize="45" FontWeight="Medium"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Bottom"
                    Margin="0,0,10,0"/>    
@@ -39,59 +39,64 @@
                 Content="%" FontSize="40" Background="#414a4c"/>
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="3" 
-                Content="÷" FontSize="40" Background="#e76822"/>
+                Content="÷" FontSize="40" Background="#e76822"
+                Command="{Binding PressNumberCommand}" CommandParameter=" ÷ "/>
 
         <Button Classes="circular"
                 Grid.Row="2" Grid.Column="0" 
-                Content="7" FontSize="40"/>
+                Content="7" FontSize="40" CommandParameter="7" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="2" Grid.Column="1" 
-                Content="8" FontSize="40"/>
+                Content="8" FontSize="40" CommandParameter="8" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="2" Grid.Column="2" 
-                Content="9" FontSize="40"/>
+                Content="9" FontSize="40" CommandParameter="9" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="2" Grid.Column="3" 
-                Content="×" FontSize="40" Background="#e76822"/>
+                Content="×" FontSize="40" Background="#e76822"
+                Command="{Binding PressNumberCommand}" CommandParameter=" × "/>
         
         <Button Classes="circular"
                 Grid.Row="3" Grid.Column="0" 
-                Content="4" FontSize="40"/>
+                Content="4" FontSize="40" CommandParameter="4" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="3" Grid.Column="1" 
-                Content="5" FontSize="40"/>
+                Content="5" FontSize="40" CommandParameter="5" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="3" Grid.Column="2" 
-                Content="6" FontSize="40"/>
+                Content="6" FontSize="40" CommandParameter="6" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="3" Grid.Column="3" 
-                Content="−" FontSize="40" Background="#e76822"/>
+                Content="−" FontSize="40" Background="#e76822"
+                Command="{Binding PressNumberCommand}" CommandParameter=" − "/>
         
         <Button Classes="circular"
                 Grid.Row="4" Grid.Column="0" 
-                Content="1" FontSize="40"/>
+                Content="1" FontSize="40" CommandParameter="1" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="4" Grid.Column="1" 
-                Content="2" FontSize="40"/>
+                Content="2" FontSize="40" CommandParameter="2" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="4" Grid.Column="2" 
-                Content="3" FontSize="40"/>
+                Content="3" FontSize="40" CommandParameter="3" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="4" Grid.Column="3" 
-                Content="+" FontSize="40" Background="#e76822"/>
+                Content="+" FontSize="40" Background="#e76822"
+                Command="{Binding PressNumberCommand}" CommandParameter=" + "/>
 
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="0" 
                 Content="U" FontSize="40"/>
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="1" 
-                Content="0" FontSize="40"/>
+                Content="0" FontSize="40" CommandParameter="0" Command="{Binding PressNumberCommand}"/>
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="2" 
                 Content="," FontSize="40"/>
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="3" 
-                Content="=" FontSize="40" Background="#e76822"/>
+                Content="=" FontSize="40" Background="#e76822"
+                Command="{Binding PressResultCommand}"/>
         
     </Grid>
 
