@@ -23,14 +23,19 @@
         <TextBlock Text="{Binding Display}"
                    Grid.Column="0" Grid.ColumnSpan="4"
                    Grid.Row="0" Foreground="White"
-                   FontSize="45" FontWeight="Medium"
+                   FontSize="70" FontWeight="Medium"
                    HorizontalAlignment="Right"
                    VerticalAlignment="Bottom"
                    Margin="0,0,10,0"/>    
         
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="0" 
-                Content="AC" FontSize="35" Background="#414a4c"/>
+                Background="#414a4c"
+                Command="{Binding PressBackspaceCommand}">
+                <Viewbox Width="45" Height="40">
+                        <Path Data="{StaticResource BackspaceRegular}" Fill="White" Stretch="Uniform"/>
+                </Viewbox>
+        </Button>
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="1" 
                 Content="±" FontSize="40" Background="#414a4c"/>
@@ -40,7 +45,7 @@
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="3" 
                 Content="÷" FontSize="40" Background="#e76822"
-                Command="{Binding PressNumberCommand}" CommandParameter=" ÷ "/>
+                Command="{Binding PressOperatorCommand}" CommandParameter=" ÷ "/>
 
         <Button Classes="circular"
                 Grid.Row="2" Grid.Column="0" 
@@ -54,7 +59,7 @@
         <Button Classes="circular"
                 Grid.Row="2" Grid.Column="3" 
                 Content="×" FontSize="40" Background="#e76822"
-                Command="{Binding PressNumberCommand}" CommandParameter=" × "/>
+                Command="{Binding PressOperatorCommand}" CommandParameter=" × "/>
         
         <Button Classes="circular"
                 Grid.Row="3" Grid.Column="0" 
@@ -68,7 +73,7 @@
         <Button Classes="circular"
                 Grid.Row="3" Grid.Column="3" 
                 Content="−" FontSize="40" Background="#e76822"
-                Command="{Binding PressNumberCommand}" CommandParameter=" − "/>
+                Command="{Binding PressOperatorCommand}" CommandParameter=" − "/>
         
         <Button Classes="circular"
                 Grid.Row="4" Grid.Column="0" 
@@ -82,11 +87,12 @@
         <Button Classes="circular"
                 Grid.Row="4" Grid.Column="3" 
                 Content="+" FontSize="40" Background="#e76822"
-                Command="{Binding PressNumberCommand}" CommandParameter=" + "/>
+                Command="{Binding PressOperatorCommand}" CommandParameter=" + "/>
 
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="0" 
-                Content="U" FontSize="40"/>
+                Content="AC" FontSize="35"
+                Command="{Binding PressClearCommand}"/>
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="1" 
                 Content="0" FontSize="40" CommandParameter="0" Command="{Binding PressNumberCommand}"/>
