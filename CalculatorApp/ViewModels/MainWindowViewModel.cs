@@ -2,6 +2,7 @@
 
 using System;
 using System.IO.Pipelines;
+using System.Linq;
 using System.Runtime.ExceptionServices;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -11,7 +12,6 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
     private string _display = "0";
-    private string _expression = "";
 
 
 
@@ -26,20 +26,70 @@ public partial class MainWindowViewModel : ViewModelBase
     }
 
     [RelayCommand]
+    private void PressOperator(string operation)
+    {
+        //You should be able to type "-" before the number so you will be able to enter negative numbers
+        if (Display.TrimEnd().Last().ToString() == operation.Trim())
+            return;
+
+        else
+            Display += operation;
+    }
+
+    [RelayCommand]
     private void PressResult()
     {
-        string[] expression = Display.Split(' ');
+        int result = 0;
 
-        if (!int.TryParse(expression[0], out int first))
+        if (Display.Length < 5)
         {
-            Display = "0";
+            return;
         }
-        if (!int.TryParse(expression[2], out int second))
-        {
-            Display = "0";
-        }
-        int result = first + second;
 
-        Display = result.ToString();
+        string[] expression = Display.Split(" ");
+
+        if (expression.Length >= 3)
+        {
+            int first = int.Parse(expression[0]);
+            int second = int.Parse(expression[2]);
+
+            switch (expression[1])
+            {
+                case "÷":
+                    result = first / second;
+                    break;
+                case "×":
+                    result = first * second;
+                    break;
+                case "+":
+                    result = first + second;
+                    break;
+                case "−":
+                    result = first - second;
+                    break;
+            }
+            Display = result.ToString();
+        }
+
+
+    }
+
+    [RelayCommand]
+    private void PressClear()
+    {
+        Display = "0";
+    }
+
+    [RelayCommand]
+    private void PressBackspace()
+    {
+        if (Display != "0")
+        {
+            if (Display.Length == 1)
+                Display = "0";
+
+            else
+                Display = Display.Remove(Display.Length - 1);
+        }
     }
 }
