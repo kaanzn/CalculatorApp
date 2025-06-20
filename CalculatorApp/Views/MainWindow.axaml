@@ -38,10 +38,12 @@
         </Button>
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="1" 
-                Content="±" FontSize="40" Background="#414a4c"/>
+                Content="AC" FontSize="35"
+                Command="{Binding PressClearCommand}"  Background="#414a4c"/>
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="2" 
-                Content="%" FontSize="40" Background="#414a4c"/>
+                Content="%" FontSize="40" Background="#414a4c"
+                Command="{Binding PressOperatorCommand}" CommandParameter=" % "/>
         <Button Classes="circular"
                 Grid.Row="1" Grid.Column="3" 
                 Content="÷" FontSize="40" Background="#e76822"
@@ -91,8 +93,8 @@
 
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="0" 
-                Content="AC" FontSize="35"
-                Command="{Binding PressClearCommand}"/>
+                Content="LS" FontSize="35"
+                Command="{Binding PressLastCommand}"/>
         <Button Classes="circular"
                 Grid.Row="5" Grid.Column="1" 
                 Content="0" FontSize="40" CommandParameter="0" Command="{Binding PressNumberCommand}"/>

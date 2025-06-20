@@ -1,8 +1,13 @@
-﻿namespace CalculatorApp.ViewModels;
+﻿using System.Numerics;
+
+namespace CalculatorApp.ViewModels;
 
 using System;
+using System.Collections.Generic;
+using System.Data;
 using System.IO.Pipelines;
 using System.Linq;
+using System.Linq.Expressions;
 using System.Runtime.ExceptionServices;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
@@ -12,6 +17,8 @@ public partial class MainWindowViewModel : ViewModelBase
 {
     [ObservableProperty]
     private string _display = "0";
+    [ObservableProperty]
+    private string _lastExpression = "0";
 
 
 
@@ -29,49 +36,31 @@ public partial class MainWindowViewModel : ViewModelBase
     private void PressOperator(string operation)
     {
         //You should be able to type "-" before the number so you will be able to enter negative numbers
-        if (Display.TrimEnd().Last().ToString() == operation.Trim())
-            return;
-
-        else
+        if (char.IsDigit(Display.TrimEnd().Last()))
             Display += operation;
     }
 
     [RelayCommand]
     private void PressResult()
     {
-        int result = 0;
+        LastExpression = Display;
 
-        if (Display.Length < 5)
+        try
         {
-            return;
+            string expression = Display
+                        .Replace(" + ", "+")
+                        .Replace(" − ", "-")
+                        .Replace(" × ", "*")
+                        .Replace(" ÷ ", "/")
+                        .Replace(" % ", "%");
+
+            var result = new DataTable().Compute(expression, null);
+            Display = result.ToString()!;
         }
-
-        string[] expression = Display.Split(" ");
-
-        if (expression.Length >= 3)
+        catch
         {
-            int first = int.Parse(expression[0]);
-            int second = int.Parse(expression[2]);
-
-            switch (expression[1])
-            {
-                case "÷":
-                    result = first / second;
-                    break;
-                case "×":
-                    result = first * second;
-                    break;
-                case "+":
-                    result = first + second;
-                    break;
-                case "−":
-                    result = first - second;
-                    break;
-            }
-            Display = result.ToString();
+            Display = LastExpression;
         }
-
-
     }
 
     [RelayCommand]
@@ -83,13 +72,23 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void PressBackspace()
     {
+        char last = Display.Last();
         if (Display != "0")
         {
-            if (Display.Length == 1)
+            if (Display.Length <= 1)
                 Display = "0";
-
-            else
+            if (Display.Length > 1 && last == ' ')
+                Display = Display.Remove(Display.Length - 3);
+            if (Display.Length > 1)
                 Display = Display.Remove(Display.Length - 1);
         }
+    }
+
+    [RelayCommand]
+    private void PressLast()
+    {
+        if (LastExpression != "0")
+            Display = LastExpression;
+            LastExpression = "0";
     }
 }
