@@ -6,11 +6,17 @@ using System.Linq;
 using Avalonia.Markup.Xaml;
 using CalculatorApp.ViewModels;
 using CalculatorApp.Views;
+using Avalonia.Styling;
+using System;
 
 namespace CalculatorApp;
 
 public partial class App : Application
 {
+    private Styles? _lightTheme;
+    private Styles? _darkTheme;
+    private Styles? _currentTheme;
+
     public override void Initialize()
     {
         AvaloniaXamlLoader.Load(this);
@@ -18,6 +24,17 @@ public partial class App : Application
 
     public override void OnFrameworkInitializationCompleted()
     {
+        _lightTheme = AvaloniaXamlLoader.Load(
+                new Uri("avares://CalculatorApp/Styles/LightTheme.axaml")
+                        ) as Styles;
+
+        _darkTheme = AvaloniaXamlLoader.Load(
+                new Uri("avares://CalculatorApp/Styles/DarkTheme.axaml")
+                        ) as Styles;
+
+        _currentTheme = _lightTheme;
+        Styles.Add(_currentTheme);
+
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
             // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
@@ -43,5 +60,15 @@ public partial class App : Application
         {
             BindingPlugins.DataValidators.Remove(plugin);
         }
+    }
+
+    public void ToggleTheme()
+    {
+        if (_currentTheme == null || _lightTheme == null || _darkTheme == null)
+            return;
+
+        Styles.Remove(_currentTheme);
+        _currentTheme = _currentTheme == _lightTheme ? _darkTheme : _lightTheme;
+        Styles.Add(_currentTheme);
     }
 }

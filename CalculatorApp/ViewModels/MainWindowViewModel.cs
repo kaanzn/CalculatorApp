@@ -9,6 +9,8 @@ using System.IO.Pipelines;
 using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.ExceptionServices;
+using Avalonia;
+using Avalonia.Styling;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -86,6 +88,15 @@ public partial class MainWindowViewModel : ViewModelBase
         {
             Display = LastExpression;
             LastExpression = "0";
+        }
+    }
+
+    [RelayCommand]
+    private void SwitchTheme()
+    {
+        if (Application.Current is App app)
+        {
+            app.ToggleTheme();
         }
     }
 
