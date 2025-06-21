@@ -9,6 +9,6 @@ public partial class MainWindow : Window
         InitializeComponent();
 
         Width = 400;
-        Height = 650;
+        Height = 740;
     }
 }

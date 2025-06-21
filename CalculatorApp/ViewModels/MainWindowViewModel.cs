@@ -25,11 +25,13 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void PressNumber(string number)
     {
-        if (Display == "0")
+        if (IsDisplayEmpty())
             Display = number;
 
         else
+        {
             Display += number;
+        }
     }
 
     [RelayCommand]
@@ -47,14 +49,7 @@ public partial class MainWindowViewModel : ViewModelBase
 
         try
         {
-            string expression = Display
-                        .Replace(" + ", "+")
-                        .Replace(" − ", "-")
-                        .Replace(" × ", "*")
-                        .Replace(" ÷ ", "/")
-                        .Replace(" % ", "%");
-
-            var result = new DataTable().Compute(expression, null);
+            var result = new DataTable().Compute(Normalize(Display), null);
             Display = result.ToString()!;
         }
         catch
@@ -73,7 +68,7 @@ public partial class MainWindowViewModel : ViewModelBase
     private void PressBackspace()
     {
         char last = Display.Last();
-        if (Display != "0")
+        if (!IsDisplayEmpty())
         {
             if (Display.Length <= 1)
                 Display = "0";
@@ -88,7 +83,21 @@ public partial class MainWindowViewModel : ViewModelBase
     private void PressLast()
     {
         if (LastExpression != "0")
+        {
             Display = LastExpression;
             LastExpression = "0";
+        }
     }
+
+    private static string Normalize(string raw)
+    {
+        return raw
+                .Replace(" + ", "+")
+                .Replace(" − ", "-")
+                .Replace(" × ", "*")
+                .Replace(" ÷ ", "/")
+                .Replace(" % ", "%");
+    }
+
+    private bool IsDisplayEmpty() => Display == "0";
 }
