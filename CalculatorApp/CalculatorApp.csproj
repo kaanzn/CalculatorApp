@@ -11,6 +11,8 @@
   <ItemGroup>
     <Folder Include="Models\" />
     <AvaloniaResource Include="Assets\**" />
+    <AvaloniaResource Include="Styles\LightTheme.axaml" />
+    <AvaloniaResource Include="Styles\DarkTheme.axaml" />
   </ItemGroup>
 
   <ItemGroup>

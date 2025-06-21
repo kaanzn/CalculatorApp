@@ -29,5 +29,11 @@ build_property.EnableCodeStyleSeverity =
 [/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/App.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Styles/DarkTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Styles/LightTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Views/MainWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml

@@ -7,9 +7,7 @@
         x:Class="CalculatorApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
-        Title="CalculatorApp"
-        Background="#e9ecce">
-        <!--Background="#0e1111"-->
+        Title="CalculatorApp">
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
@@ -19,7 +17,7 @@
     <DockPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" DockPanel.Dock="Top">
                             
-                        <Button Classes="rectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5"/>
+                        <Button Classes="rectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5" Command="{Binding SwitchThemeCommand}"/>
                         <Button Classes="rectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25"
                                 VerticalContentAlignment="Top" Margin="5,0,0,0"/>
 
@@ -29,27 +27,24 @@
                 Margin="5">
                 <TextBlock Text="{Binding Display}"
                         Grid.Column="0" Grid.ColumnSpan="4"
-                        Grid.Row="0" Foreground="#4c454c"
-                        FontSize="70" FontWeight="Medium"
-                        HorizontalAlignment="Right"
-                        VerticalAlignment="Bottom"
-                        Margin="0,0,10,0"/>    
+                        Grid.Row="0" Margin="0,0,10,0"
+                        Classes="display"/>
                 
-                <Button Classes="rectangle dark"
+                <Button Classes="rectangle side"
                         Grid.Row="1" Grid.Column="0" 
                         Command="{Binding PressBackspaceCommand}">
                         <Viewbox Width="45" Height="40">
-                                <Path Data="{StaticResource BackspaceRegular}" Fill="#4c454c" Stretch="Uniform"/>
+                                <Path Data="{StaticResource BackspaceRegular}" Classes="icon"/>
                         </Viewbox>
                 </Button>
-                <Button Classes="rectangle dark"
+                <Button Classes="rectangle side"
                         Grid.Row="1" Grid.Column="1" 
                         Content="AC" FontSize="35"
                         Command="{Binding PressClearCommand}"/>
-                <Button Classes="rectangle dark"
+                <Button Classes="rectangle side"
                         Grid.Row="1" Grid.Column="2" 
                         Content="%" Command="{Binding PressOperatorCommand}" CommandParameter=" % "/>
-                <Button Classes="rectangle color"
+                <Button Classes="rectangle operator"
                         Grid.Row="1" Grid.Column="3" 
                         Content="÷" Command="{Binding PressOperatorCommand}" CommandParameter=" ÷ "/>
 
@@ -62,7 +57,7 @@
                 <Button Classes="rectangle"
                         Grid.Row="2" Grid.Column="2" 
                         Content="9" CommandParameter="9" Command="{Binding PressNumberCommand}"/>
-                <Button Classes="rectangle color"
+                <Button Classes="rectangle operator"
                         Grid.Row="2" Grid.Column="3" 
                         Content="×" Command="{Binding PressOperatorCommand}" CommandParameter=" × "/>
                 
@@ -75,7 +70,7 @@
                 <Button Classes="rectangle"
                         Grid.Row="3" Grid.Column="2" 
                         Content="6" CommandParameter="6" Command="{Binding PressNumberCommand}"/>
-                <Button Classes="rectangle color"
+                <Button Classes="rectangle operator"
                         Grid.Row="3" Grid.Column="3" 
                         Content="−" Command="{Binding PressOperatorCommand}" CommandParameter=" − "/>
                 
@@ -88,7 +83,7 @@
                 <Button Classes="rectangle"
                         Grid.Row="4" Grid.Column="2" 
                         Content="3" CommandParameter="3" Command="{Binding PressNumberCommand}"/>
-                <Button Classes="rectangle color"
+                <Button Classes="rectangle operator"
                         Grid.Row="4" Grid.Column="3" 
                         Content="+" Command="{Binding PressOperatorCommand}" CommandParameter=" + "/>
 
@@ -102,7 +97,7 @@
                 <Button Classes="rectangle"
                         Grid.Row="5" Grid.Column="2" 
                         Content=","/>
-                <Button Classes="rectangle color"
+                <Button Classes="rectangle operator"
                         Grid.Row="5" Grid.Column="3" 
                         Content="=" Command="{Binding PressResultCommand}"/>
                 
