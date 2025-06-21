@@ -3,109 +3,109 @@
         xmlns:vm="using:CalculatorApp.ViewModels"
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
-        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="650" CanResize="False"
+        mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="740" CanResize="False"
         x:Class="CalculatorApp.Views.MainWindow"
         x:DataType="vm:MainWindowViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="CalculatorApp"
-        Background="#0e1111">
+        Background="#e9ecce">
+        <!--Background="#0e1111"-->
 
     <Design.DataContext>
         <!-- This only sets the DataContext for the previewer in an IDE,
              to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
+    <DockPanel>
+                <StackPanel Orientation="Vertical" HorizontalAlignment="Left" DockPanel.Dock="Top">
+                            
+                        <Button Classes="rectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5"/>
+                        <Button Classes="rectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25"
+                                VerticalContentAlignment="Top" Margin="5,0,0,0"/>
 
-    <Grid ColumnDefinitions="25*,25*,25*,25*"
-          RowDefinitions="25*,15*,15*,15*,15*,15*"
-          Margin="5">
+                </StackPanel>
+        <Grid ColumnDefinitions="25*,25*,25*,25*"
+                RowDefinitions="20*,15*,15*,15*,15*,15*"
+                Margin="5">
+                <TextBlock Text="{Binding Display}"
+                        Grid.Column="0" Grid.ColumnSpan="4"
+                        Grid.Row="0" Foreground="#4c454c"
+                        FontSize="70" FontWeight="Medium"
+                        HorizontalAlignment="Right"
+                        VerticalAlignment="Bottom"
+                        Margin="0,0,10,0"/>    
+                
+                <Button Classes="rectangle dark"
+                        Grid.Row="1" Grid.Column="0" 
+                        Command="{Binding PressBackspaceCommand}">
+                        <Viewbox Width="45" Height="40">
+                                <Path Data="{StaticResource BackspaceRegular}" Fill="#4c454c" Stretch="Uniform"/>
+                        </Viewbox>
+                </Button>
+                <Button Classes="rectangle dark"
+                        Grid.Row="1" Grid.Column="1" 
+                        Content="AC" FontSize="35"
+                        Command="{Binding PressClearCommand}"/>
+                <Button Classes="rectangle dark"
+                        Grid.Row="1" Grid.Column="2" 
+                        Content="%" Command="{Binding PressOperatorCommand}" CommandParameter=" % "/>
+                <Button Classes="rectangle color"
+                        Grid.Row="1" Grid.Column="3" 
+                        Content="÷" Command="{Binding PressOperatorCommand}" CommandParameter=" ÷ "/>
 
-        <TextBlock Text="{Binding Display}"
-                   Grid.Column="0" Grid.ColumnSpan="4"
-                   Grid.Row="0" Foreground="White"
-                   FontSize="70" FontWeight="Medium"
-                   HorizontalAlignment="Right"
-                   VerticalAlignment="Bottom"
-                   Margin="0,0,10,0"/>    
-        
-        <Button Classes="circular"
-                Grid.Row="1" Grid.Column="0" 
-                Background="#414a4c"
-                Command="{Binding PressBackspaceCommand}">
-                <Viewbox Width="45" Height="40">
-                        <Path Data="{StaticResource BackspaceRegular}" Fill="White" Stretch="Uniform"/>
-                </Viewbox>
-        </Button>
-        <Button Classes="circular"
-                Grid.Row="1" Grid.Column="1" 
-                Content="AC" FontSize="35"
-                Command="{Binding PressClearCommand}"  Background="#414a4c"/>
-        <Button Classes="circular"
-                Grid.Row="1" Grid.Column="2" 
-                Content="%" FontSize="40" Background="#414a4c"
-                Command="{Binding PressOperatorCommand}" CommandParameter=" % "/>
-        <Button Classes="circular"
-                Grid.Row="1" Grid.Column="3" 
-                Content="÷" FontSize="40" Background="#e76822"
-                Command="{Binding PressOperatorCommand}" CommandParameter=" ÷ "/>
+                <Button Classes="rectangle"
+                        Grid.Row="2" Grid.Column="0" 
+                        Content="7" CommandParameter="7" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="2" Grid.Column="1" 
+                        Content="8" CommandParameter="8" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="2" Grid.Column="2" 
+                        Content="9" CommandParameter="9" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle color"
+                        Grid.Row="2" Grid.Column="3" 
+                        Content="×" Command="{Binding PressOperatorCommand}" CommandParameter=" × "/>
+                
+                <Button Classes="rectangle"
+                        Grid.Row="3" Grid.Column="0" 
+                        Content="4" CommandParameter="4" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="3" Grid.Column="1" 
+                        Content="5" CommandParameter="5" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="3" Grid.Column="2" 
+                        Content="6" CommandParameter="6" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle color"
+                        Grid.Row="3" Grid.Column="3" 
+                        Content="−" Command="{Binding PressOperatorCommand}" CommandParameter=" − "/>
+                
+                <Button Classes="rectangle"
+                        Grid.Row="4" Grid.Column="0" 
+                        Content="1" CommandParameter="1" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="4" Grid.Column="1" 
+                        Content="2" CommandParameter="2" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="4" Grid.Column="2" 
+                        Content="3" CommandParameter="3" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle color"
+                        Grid.Row="4" Grid.Column="3" 
+                        Content="+" Command="{Binding PressOperatorCommand}" CommandParameter=" + "/>
 
-        <Button Classes="circular"
-                Grid.Row="2" Grid.Column="0" 
-                Content="7" FontSize="40" CommandParameter="7" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="2" Grid.Column="1" 
-                Content="8" FontSize="40" CommandParameter="8" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="2" Grid.Column="2" 
-                Content="9" FontSize="40" CommandParameter="9" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="2" Grid.Column="3" 
-                Content="×" FontSize="40" Background="#e76822"
-                Command="{Binding PressOperatorCommand}" CommandParameter=" × "/>
-        
-        <Button Classes="circular"
-                Grid.Row="3" Grid.Column="0" 
-                Content="4" FontSize="40" CommandParameter="4" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="3" Grid.Column="1" 
-                Content="5" FontSize="40" CommandParameter="5" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="3" Grid.Column="2" 
-                Content="6" FontSize="40" CommandParameter="6" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="3" Grid.Column="3" 
-                Content="−" FontSize="40" Background="#e76822"
-                Command="{Binding PressOperatorCommand}" CommandParameter=" − "/>
-        
-        <Button Classes="circular"
-                Grid.Row="4" Grid.Column="0" 
-                Content="1" FontSize="40" CommandParameter="1" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="4" Grid.Column="1" 
-                Content="2" FontSize="40" CommandParameter="2" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="4" Grid.Column="2" 
-                Content="3" FontSize="40" CommandParameter="3" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="4" Grid.Column="3" 
-                Content="+" FontSize="40" Background="#e76822"
-                Command="{Binding PressOperatorCommand}" CommandParameter=" + "/>
-
-        <Button Classes="circular"
-                Grid.Row="5" Grid.Column="0" 
-                Content="LS" FontSize="35"
-                Command="{Binding PressLastCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="5" Grid.Column="1" 
-                Content="0" FontSize="40" CommandParameter="0" Command="{Binding PressNumberCommand}"/>
-        <Button Classes="circular"
-                Grid.Row="5" Grid.Column="2" 
-                Content="," FontSize="40"/>
-        <Button Classes="circular"
-                Grid.Row="5" Grid.Column="3" 
-                Content="=" FontSize="40" Background="#e76822"
-                Command="{Binding PressResultCommand}"/>
-        
-    </Grid>
-
+                <Button Classes="rectangle"
+                        Grid.Row="5" Grid.Column="0" 
+                        Content="LS" FontSize="35"
+                        Command="{Binding PressLastCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="5" Grid.Column="1" 
+                        Content="0" CommandParameter="0" Command="{Binding PressNumberCommand}"/>
+                <Button Classes="rectangle"
+                        Grid.Row="5" Grid.Column="2" 
+                        Content=","/>
+                <Button Classes="rectangle color"
+                        Grid.Row="5" Grid.Column="3" 
+                        Content="=" Command="{Binding PressResultCommand}"/>
+                
+        </Grid>
+    </DockPanel>
 </Window>
