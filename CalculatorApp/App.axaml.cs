@@ -15,7 +15,12 @@ public partial class App : Application
 {
     private Styles? _lightTheme;
     private Styles? _darkTheme;
+    private Styles? _sciLightTheme;
+    private Styles? _sciDarkTheme;
     private Styles? _currentTheme;
+
+    private bool _isDarkMode = false;
+    private bool _isSciMode = false;
 
     public override void Initialize()
     {
@@ -30,6 +35,12 @@ public partial class App : Application
 
         _darkTheme = AvaloniaXamlLoader.Load(
                 new Uri("avares://CalculatorApp/Styles/DarkTheme.axaml")
+                        ) as Styles;
+        _sciLightTheme = AvaloniaXamlLoader.Load(
+                new Uri("avares://CalculatorApp/Styles/ScientificLightTheme.axaml")
+                        ) as Styles;
+        _sciDarkTheme = AvaloniaXamlLoader.Load(
+                new Uri("avares://CalculatorApp/Styles/ScientificDarkTheme.axaml")
                         ) as Styles;
 
         _currentTheme = _lightTheme;
@@ -64,11 +75,33 @@ public partial class App : Application
 
     public void ToggleTheme()
     {
-        if (_currentTheme == null || _lightTheme == null || _darkTheme == null)
-            return;
+        _isDarkMode = !_isDarkMode;
 
-        Styles.Remove(_currentTheme);
-        _currentTheme = _currentTheme == _lightTheme ? _darkTheme : _lightTheme;
-        Styles.Add(_currentTheme);
+        var newTheme = _isSciMode
+                            ? (_isDarkMode ? _sciDarkTheme : _sciLightTheme)
+                            : (_isDarkMode ? _darkTheme : _lightTheme);
+
+        if (newTheme != null && _currentTheme != newTheme)
+        {
+            Styles.Remove(_currentTheme);
+            _currentTheme = newTheme;
+            Styles.Add(_currentTheme);
+        }
+    }
+
+    public void ApplyTheme(bool isSci)
+    {
+        _isSciMode = isSci;
+
+        var newTheme = isSci
+                        ? (_isDarkMode ? _sciDarkTheme : _sciLightTheme)
+                        : (_isDarkMode ? _darkTheme : _lightTheme);
+
+        if (newTheme != null && _currentTheme != newTheme)
+        {
+            Styles.Remove(_currentTheme!);
+            _currentTheme = newTheme;
+            Styles.Add(_currentTheme);
+        }
     }
 }

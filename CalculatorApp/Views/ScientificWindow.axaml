@@ -1,0 +1,199 @@
+<Window xmlns="https://github.com/avaloniaui"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:vm="using:CalculatorApp.ViewModels"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        mc:Ignorable="d" d:DesignWidth="800" d:DesignHeight="550" CanResize="False"
+        x:Class="CalculatorApp.Views.ScientificWindow"
+        x:DataType="vm:ScientificViewModel"
+        Title="ScientificWindow">
+
+  <Design.DataContext>
+    <vm:ScientificViewModel/>
+  </Design.DataContext>
+
+  <DockPanel>
+    <StackPanel Orientation="Vertical" HorizontalAlignment="Left" DockPanel.Dock="Top">
+
+      <Button Classes="sciRectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5"/>
+      <Button Classes="sciRectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25" Margin="5,0,0,0"/>
+
+    </StackPanel>
+
+    <Grid RowDefinitions="20*,15*,15*,15*,15*,15*"
+          ColumnDefinitions="10*,10*,10*,10*,10*,10*,10*,10*,10*,10*,"
+          Margin="5">
+
+      <TextBlock Text="{Binding Display}"
+                Grid.Column="0" Grid.ColumnSpan="10"
+                Grid.Row="0" Margin="0,0,10,0"
+                Classes="display"/>
+
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="1" Grid.Column="0"
+              Content="("/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="1" Grid.Column="1"
+              Content=")"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="1" Grid.Column="2"
+              Content="mc"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="1" Grid.Column="3"
+              Content="m+"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="1" Grid.Column="4"
+              Content="m-"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="1" Grid.Column="5"
+              Content="mr"/>
+
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="2" Grid.Column="0"
+              Content="2nd"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="2" Grid.Column="1"
+              Content="x²"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="2" Grid.Column="2"
+              Content="x³"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="2" Grid.Column="3"
+              Content="xʸ"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="2" Grid.Column="4"
+              Content="𝑒ˣ"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="2" Grid.Column="5"
+              Content="10ˣ"/>
+
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="3" Grid.Column="0"
+              Content="1/x"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="3" Grid.Column="1"
+              Content="²√x"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="3" Grid.Column="2"
+              Content="∛x"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="3" Grid.Column="3"
+              Content="ʸ√x"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="3" Grid.Column="4"
+              Content="ln"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="3" Grid.Column="5"
+              Content="log₁₀"/>
+
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="4" Grid.Column="0"
+              Content="x!"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="4" Grid.Column="1"
+              Content="sin"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="4" Grid.Column="2"
+              Content="cos"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="4" Grid.Column="3"
+              Content="tan"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="4" Grid.Column="4"
+              Content="𝑒"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="4" Grid.Column="5"
+              Content="EE"/>
+
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="5" Grid.Column="0"
+              Content="Rand"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="5" Grid.Column="1"
+              Content="sinh"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="5" Grid.Column="2"
+              Content="cosh"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="5" Grid.Column="3"
+              Content="tanh"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="5" Grid.Column="4"
+              Content="π"/>
+      <Button Classes="sciRectangle scientific"
+              Grid.Row="5" Grid.Column="5"
+              Content="Rad"/>
+
+      <Button Classes="sciRectangle side"
+              Grid.Row="1" Grid.Column="6">
+              <Viewbox Width="22" Height="20">
+                <Path Data="{StaticResource BackspaceRegular}" Classes="icon"/>
+              </Viewbox>
+      </Button>
+      <Button Classes="sciRectangle side"
+              Grid.Row="1" Grid.Column="7"
+              Content="AC" FontSize="17"/>
+      <Button Classes="sciRectangle side"
+              Grid.Row="1" Grid.Column="8"
+              Content="%"/>
+      <Button Classes="sciRectangle operator"
+              Grid.Row="1" Grid.Column="9"
+              Content="÷"/>
+
+      <Button Classes="sciRectangle"
+              Grid.Row="2" Grid.Column="6"
+              Content="7"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="2" Grid.Column="7"
+              Content="8"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="2" Grid.Column="8"
+              Content="9"/>
+      <Button Classes="sciRectangle operator"
+              Grid.Row="2" Grid.Column="9"
+              Content="×"/>
+
+      <Button Classes="sciRectangle"
+              Grid.Row="3" Grid.Column="6"
+              Content="4"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="3" Grid.Column="7"
+              Content="5"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="3" Grid.Column="8"
+              Content="6"/>
+      <Button Classes="sciRectangle operator"
+              Grid.Row="3" Grid.Column="9"
+              Content="−"/>
+
+      <Button Classes="sciRectangle"
+              Grid.Row="4" Grid.Column="6"
+              Content="1"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="4" Grid.Column="7"
+              Content="2"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="4" Grid.Column="8"
+              Content="3"/>
+      <Button Classes="sciRectangle operator"
+              Grid.Row="4" Grid.Column="9"
+              Content="+"/>
+
+      <Button Classes="sciRectangle"
+              Grid.Row="5" Grid.Column="6"
+              Content="±"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="5" Grid.Column="7"
+              Content="0"/>
+      <Button Classes="sciRectangle"
+              Grid.Row="5" Grid.Column="8"
+              Content=","/>
+      <Button Classes="sciRectangle operator"
+              Grid.Row="5" Grid.Column="9"
+              Content="="/>
+
+    </Grid>
+
+  </DockPanel>
+
+</Window>

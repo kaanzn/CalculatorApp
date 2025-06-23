@@ -10,7 +10,10 @@ using System.Linq;
 using System.Linq.Expressions;
 using System.Runtime.ExceptionServices;
 using Avalonia;
+using Avalonia.Controls;
+using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Styling;
+using CalculatorApp.Views;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
@@ -97,6 +100,24 @@ public partial class MainWindowViewModel : ViewModelBase
         if (Application.Current is App app)
         {
             app.ToggleTheme();
+        }
+    }
+
+    [RelayCommand]
+    private void SwitchScientific()
+    {
+        if (Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
+        {
+            var scientific = new ScientificWindow
+            {
+                DataContext = new ScientificViewModel()
+            };
+
+            lifetime.MainWindow!.Hide();
+
+            ((App)Application.Current).ApplyTheme(isSci: true);
+
+            scientific.Show();
         }
     }
 

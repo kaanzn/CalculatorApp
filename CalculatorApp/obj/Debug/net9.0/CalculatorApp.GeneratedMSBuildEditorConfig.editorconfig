@@ -35,5 +35,14 @@ build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 [/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Styles/LightTheme.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
 
+[/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Styles/ScientificDarkTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Styles/ScientificLightTheme.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
 [/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Views/MainWindow.axaml]
+build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
+
+[/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/Views/ScientificWindow.axaml]
 build_metadata.AdditionalFiles.SourceItemGroup = AvaloniaXaml
