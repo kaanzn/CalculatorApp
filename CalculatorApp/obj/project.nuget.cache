@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "Uasa32+HRuk=",
+  "dgSpecHash": "wYqxnRPJQvw=",
   "success": true,
   "projectFilePath": "/Users/kaanozaydin/Desktop/CalculatorApp/CalculatorApp/CalculatorApp.csproj",
   "expectedPackageFiles": [
@@ -26,6 +26,7 @@
     "/Users/kaanozaydin/.nuget/packages/harfbuzzsharp.nativeassets.macos/7.3.0.3/harfbuzzsharp.nativeassets.macos.7.3.0.3.nupkg.sha512",
     "/Users/kaanozaydin/.nuget/packages/harfbuzzsharp.nativeassets.webassembly/7.3.0.3/harfbuzzsharp.nativeassets.webassembly.7.3.0.3.nupkg.sha512",
     "/Users/kaanozaydin/.nuget/packages/harfbuzzsharp.nativeassets.win32/7.3.0.3/harfbuzzsharp.nativeassets.win32.7.3.0.3.nupkg.sha512",
+    "/Users/kaanozaydin/.nuget/packages/mathparser.org-mxparser/6.1.0/mathparser.org-mxparser.6.1.0.nupkg.sha512",
     "/Users/kaanozaydin/.nuget/packages/microcom.runtime/0.11.0/microcom.runtime.0.11.0.nupkg.sha512",
     "/Users/kaanozaydin/.nuget/packages/skiasharp/2.88.9/skiasharp.2.88.9.nupkg.sha512",
     "/Users/kaanozaydin/.nuget/packages/skiasharp.nativeassets.linux/2.88.9/skiasharp.nativeassets.linux.2.88.9.nupkg.sha512",

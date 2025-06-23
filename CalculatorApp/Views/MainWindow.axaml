@@ -10,15 +10,13 @@
         Title="CalculatorApp">
 
     <Design.DataContext>
-        <!-- This only sets the DataContext for the previewer in an IDE,
-             to set the actual DataContext for runtime, set the DataContext property in code (look at App.axaml.cs) -->
         <vm:MainWindowViewModel/>
     </Design.DataContext>
     <DockPanel>
                 <StackPanel Orientation="Vertical" HorizontalAlignment="Left" DockPanel.Dock="Top">
                             
                         <Button Classes="rectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5" Command="{Binding SwitchThemeCommand}"/>
-                        <Button Classes="rectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25"
+                        <Button Classes="rectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25" Command="{Binding SwitchScientificCommand}"
                                 VerticalContentAlignment="Top" Margin="5,0,0,0"/>
 
                 </StackPanel>

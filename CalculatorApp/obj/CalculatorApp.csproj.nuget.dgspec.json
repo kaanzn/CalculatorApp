@@ -68,6 +68,10 @@
             "CommunityToolkit.Mvvm": {
               "target": "Package",
               "version": "[8.4.0, )"
+            },
+            "MathParser.org-mXparser": {
+              "target": "Package",
+              "version": "[6.1.0, )"
             }
           },
           "imports": [
