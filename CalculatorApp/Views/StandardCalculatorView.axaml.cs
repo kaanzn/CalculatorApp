@@ -2,9 +2,9 @@ using Avalonia.Controls;
 
 namespace CalculatorApp.Views;
 
-public partial class MainWindow : Window
+public partial class StandardCalculatorView : Window
 {
-    public MainWindow()
+    public StandardCalculatorView()
     {
         InitializeComponent();
 

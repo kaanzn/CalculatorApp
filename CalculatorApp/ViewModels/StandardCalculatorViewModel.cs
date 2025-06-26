@@ -1,15 +1,5 @@
-﻿using System.Numerics;
-
-namespace CalculatorApp.ViewModels;
-
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO.Pipelines;
+﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Net;
-using System.Runtime.ExceptionServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
@@ -20,7 +10,9 @@ using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace CalculatorApp.ViewModels;
+
+public partial class StandardCalculatorViewModel : ViewModelBase
 {
     [ObservableProperty]
     private string _display = "0";
@@ -58,7 +50,7 @@ public partial class MainWindowViewModel : ViewModelBase
             return;
         }
 
-        string[] parts = Display.Split(new[] { '+', '−', '×', '÷', '%' }, StringSplitOptions.RemoveEmptyEntries);
+        string[] parts = Display.Split(['+', '−', '×', '÷', '%'], StringSplitOptions.RemoveEmptyEntries);
         string lastNumber = parts.Last().Trim();
 
         if (lastNumber.Contains(",") && !IsOperator(Display.Last()))
@@ -120,9 +112,9 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
         {
-            var scientific = new ScientificWindow
+            var scientific = new ScientificCalculatorView
             {
-                DataContext = new ScientificViewModel()
+                DataContext = new ScientificCalculatorViewModel()
             };
 
             lifetime.MainWindow!.Hide();

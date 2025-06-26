@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="740" CanResize="False"
-        x:Class="CalculatorApp.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:Class="CalculatorApp.Views.StandardCalculatorView"
+        x:DataType="vm:StandardCalculatorViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="CalculatorApp">
 
