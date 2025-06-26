@@ -1,24 +1,18 @@
-﻿using System.Numerics;
-
-namespace CalculatorApp.ViewModels;
-
-using System;
-using System.Collections.Generic;
-using System.Data;
-using System.IO.Pipelines;
+﻿using System;
 using System.Linq;
-using System.Linq.Expressions;
-using System.Runtime.ExceptionServices;
 using Avalonia;
 using Avalonia.Controls;
 using Avalonia.Controls.ApplicationLifetimes;
 using Avalonia.Styling;
+using CalculatorApp.Models;
 using CalculatorApp.Views;
 using CommunityToolkit.Mvvm;
 using CommunityToolkit.Mvvm.ComponentModel;
 using CommunityToolkit.Mvvm.Input;
 
-public partial class MainWindowViewModel : ViewModelBase
+namespace CalculatorApp.ViewModels;
+
+public partial class StandardCalculatorViewModel : ViewModelBase
 {
     [ObservableProperty]
     private string _display = "0";
@@ -43,24 +37,39 @@ public partial class MainWindowViewModel : ViewModelBase
     private void PressOperator(string operation)
     {
         //You should be able to type "-" before the number so you will be able to enter negative numbers
-        if (char.IsDigit(Display.TrimEnd().Last()))
+        if (char.IsDigit(Display.Last()))
             Display += operation;
+    }
+
+    [RelayCommand]
+    private void PressDecimal(string comma)
+    {
+        if (IsDisplayEmpty())
+        {
+            Display = "0,";
+            return;
+        }
+
+        string[] parts = Display.Split(['+', '−', '×', '÷', '%'], StringSplitOptions.RemoveEmptyEntries);
+        string lastNumber = parts.Last().Trim();
+
+        if (lastNumber.Contains(",") && !IsOperator(Display.Last()))
+            return;
+
+        if (!char.IsDigit(Display.Last()))
+        {
+            Display += "0,";
+            return;
+        }
+
+        Display += comma;
     }
 
     [RelayCommand]
     private void PressResult()
     {
         LastExpression = Display;
-
-        try
-        {
-            var result = new DataTable().Compute(Normalize(Display), null);
-            Display = result.ToString()!;
-        }
-        catch
-        {
-            Display = LastExpression;
-        }
+        Display = MathEngine.Evaluate(Display);
     }
 
     [RelayCommand]
@@ -72,16 +81,11 @@ public partial class MainWindowViewModel : ViewModelBase
     [RelayCommand]
     private void PressBackspace()
     {
-        char last = Display.Last();
-        if (!IsDisplayEmpty())
-        {
-            if (Display.Length <= 1)
-                Display = "0";
-            if (Display.Length > 1 && last == ' ')
-                Display = Display.Remove(Display.Length - 3);
-            if (Display.Length > 1)
-                Display = Display.Remove(Display.Length - 1);
-        }
+        if (Display.Length <= 1 || Display == "Error")
+            Display = "0";
+
+        else
+            Display = Display.Remove(Display.Length - 1);
     }
 
     [RelayCommand]
@@ -108,9 +112,9 @@ public partial class MainWindowViewModel : ViewModelBase
     {
         if (Application.Current!.ApplicationLifetime is IClassicDesktopStyleApplicationLifetime lifetime)
         {
-            var scientific = new ScientificWindow
+            var scientific = new ScientificCalculatorView
             {
-                DataContext = new ScientificViewModel()
+                DataContext = new ScientificCalculatorViewModel()
             };
 
             lifetime.MainWindow!.Hide();
@@ -120,16 +124,6 @@ public partial class MainWindowViewModel : ViewModelBase
             scientific.Show();
         }
     }
-
-    private static string Normalize(string raw)
-    {
-        return raw
-                .Replace(" + ", "+")
-                .Replace(" − ", "-")
-                .Replace(" × ", "*")
-                .Replace(" ÷ ", "/")
-                .Replace(" % ", "%");
-    }
-
     private bool IsDisplayEmpty() => Display == "0";
+    private bool IsOperator(char c) => c == '+' || c == '−' || c == '×' || c == '÷' || c == '%';
 }

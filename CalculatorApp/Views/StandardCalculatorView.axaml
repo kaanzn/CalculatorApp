@@ -4,8 +4,8 @@
         xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
         xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
         mc:Ignorable="d" d:DesignWidth="400" d:DesignHeight="740" CanResize="False"
-        x:Class="CalculatorApp.Views.MainWindow"
-        x:DataType="vm:MainWindowViewModel"
+        x:Class="CalculatorApp.Views.StandardCalculatorView"
+        x:DataType="vm:StandardCalculatorViewModel"
         Icon="/Assets/avalonia-logo.ico"
         Title="CalculatorApp">
 
@@ -41,10 +41,10 @@
                         Command="{Binding PressClearCommand}"/>
                 <Button Classes="rectangle side"
                         Grid.Row="1" Grid.Column="2" 
-                        Content="%" Command="{Binding PressOperatorCommand}" CommandParameter=" % "/>
+                        Content="%" Command="{Binding PressOperatorCommand}" CommandParameter="%"/>
                 <Button Classes="rectangle operator"
                         Grid.Row="1" Grid.Column="3" 
-                        Content="÷" Command="{Binding PressOperatorCommand}" CommandParameter=" ÷ "/>
+                        Content="÷" Command="{Binding PressOperatorCommand}" CommandParameter="÷"/>
 
                 <Button Classes="rectangle"
                         Grid.Row="2" Grid.Column="0" 
@@ -57,7 +57,7 @@
                         Content="9" CommandParameter="9" Command="{Binding PressNumberCommand}"/>
                 <Button Classes="rectangle operator"
                         Grid.Row="2" Grid.Column="3" 
-                        Content="×" Command="{Binding PressOperatorCommand}" CommandParameter=" × "/>
+                        Content="×" Command="{Binding PressOperatorCommand}" CommandParameter="×"/>
                 
                 <Button Classes="rectangle"
                         Grid.Row="3" Grid.Column="0" 
@@ -70,7 +70,7 @@
                         Content="6" CommandParameter="6" Command="{Binding PressNumberCommand}"/>
                 <Button Classes="rectangle operator"
                         Grid.Row="3" Grid.Column="3" 
-                        Content="−" Command="{Binding PressOperatorCommand}" CommandParameter=" − "/>
+                        Content="−" Command="{Binding PressOperatorCommand}" CommandParameter="−"/>
                 
                 <Button Classes="rectangle"
                         Grid.Row="4" Grid.Column="0" 
@@ -83,7 +83,7 @@
                         Content="3" CommandParameter="3" Command="{Binding PressNumberCommand}"/>
                 <Button Classes="rectangle operator"
                         Grid.Row="4" Grid.Column="3" 
-                        Content="+" Command="{Binding PressOperatorCommand}" CommandParameter=" + "/>
+                        Content="+" Command="{Binding PressOperatorCommand}" CommandParameter="+"/>
 
                 <Button Classes="rectangle"
                         Grid.Row="5" Grid.Column="0" 
@@ -94,7 +94,7 @@
                         Content="0" CommandParameter="0" Command="{Binding PressNumberCommand}"/>
                 <Button Classes="rectangle"
                         Grid.Row="5" Grid.Column="2" 
-                        Content=","/>
+                        Content="," CommandParameter="," Command="{Binding PressDecimalCommand}"/>
                 <Button Classes="rectangle operator"
                         Grid.Row="5" Grid.Column="3" 
                         Content="=" Command="{Binding PressResultCommand}"/>
