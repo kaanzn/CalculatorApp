@@ -15,8 +15,9 @@
   <DockPanel>
     <StackPanel Orientation="Vertical" HorizontalAlignment="Left" DockPanel.Dock="Top">
 
-      <Button Classes="sciRectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5"/>
-      <Button Classes="sciRectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25" Margin="5,0,0,0"/>
+      <Button Classes="sciRectangle" Content="☼" Width="50" Height="40" FontSize="35" Margin="5,5,0,5" Command="{Binding SwitchThemeCommand}"/>
+      <Button Classes="sciRectangle" Content="𝑓ₓ" Width="50" Height="40" FontSize="25" Command="{Binding SwitchCalculatorCommand}"
+                VerticalContentAlignment="Top" Margin="5,0,0,0"/>
 
     </StackPanel>
 
@@ -125,72 +126,74 @@
               Content="Rad"/>
 
       <Button Classes="sciRectangle side"
-              Grid.Row="1" Grid.Column="6">
+              Grid.Row="1" Grid.Column="6"
+              Command="{Binding PressBackspaceCommand}">
               <Viewbox Width="22" Height="20">
                 <Path Data="{StaticResource BackspaceRegular}" Classes="icon"/>
               </Viewbox>
       </Button>
       <Button Classes="sciRectangle side"
               Grid.Row="1" Grid.Column="7"
-              Content="AC" FontSize="17"/>
+              Content="AC" FontSize="17"
+              Command="{Binding PressClearCommand}"/>
       <Button Classes="sciRectangle side"
               Grid.Row="1" Grid.Column="8"
-              Content="%"/>
+              Content="%" Command="{Binding PressOperatorCommand}" CommandParameter="%"/>
       <Button Classes="sciRectangle operator"
               Grid.Row="1" Grid.Column="9"
-              Content="÷"/>
+              Content="÷" Command="{Binding PressOperatorCommand}" CommandParameter="÷"/>
 
       <Button Classes="sciRectangle"
               Grid.Row="2" Grid.Column="6"
-              Content="7"/>
+              Content="7" CommandParameter="7" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="2" Grid.Column="7"
-              Content="8"/>
+              Content="8" CommandParameter="8" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="2" Grid.Column="8"
-              Content="9"/>
+              Content="9" CommandParameter="9" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle operator"
               Grid.Row="2" Grid.Column="9"
-              Content="×"/>
+              Content="×" Command="{Binding PressOperatorCommand}" CommandParameter="×"/>
 
       <Button Classes="sciRectangle"
               Grid.Row="3" Grid.Column="6"
-              Content="4"/>
+              Content="4" CommandParameter="4" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="3" Grid.Column="7"
-              Content="5"/>
+              Content="5" CommandParameter="5" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="3" Grid.Column="8"
-              Content="6"/>
+              Content="6" CommandParameter="6" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle operator"
               Grid.Row="3" Grid.Column="9"
-              Content="−"/>
+              Content="−" Command="{Binding PressOperatorCommand}" CommandParameter="−"/>
 
       <Button Classes="sciRectangle"
               Grid.Row="4" Grid.Column="6"
-              Content="1"/>
+              Content="1" CommandParameter="1" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="4" Grid.Column="7"
-              Content="2"/>
+              Content="2" CommandParameter="2" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="4" Grid.Column="8"
-              Content="3"/>
+              Content="3" CommandParameter="3" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle operator"
               Grid.Row="4" Grid.Column="9"
-              Content="+"/>
+              Content="+" Command="{Binding PressOperatorCommand}" CommandParameter="+"/>
 
       <Button Classes="sciRectangle"
               Grid.Row="5" Grid.Column="6"
               Content="±"/>
       <Button Classes="sciRectangle"
               Grid.Row="5" Grid.Column="7"
-              Content="0"/>
+              Content="0" CommandParameter="0" Command="{Binding PressNumberCommand}"/>
       <Button Classes="sciRectangle"
               Grid.Row="5" Grid.Column="8"
-              Content=","/>
+              Content="," CommandParameter="," Command="{Binding PressDecimalCommand}"/>
       <Button Classes="sciRectangle operator"
               Grid.Row="5" Grid.Column="9"
-              Content="="/>
+              Content="=" Command="{Binding PressResultCommand}"/>
 
     </Grid>
 

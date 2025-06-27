@@ -8,11 +8,14 @@ using CalculatorApp.ViewModels;
 using CalculatorApp.Views;
 using Avalonia.Styling;
 using System;
+using Avalonia.Controls;
 
 namespace CalculatorApp;
 
 public partial class App : Application
 {
+    private Window? _standard;
+    private Window? _scientific;
     private Styles? _lightTheme;
     private Styles? _darkTheme;
     private Styles? _sciLightTheme;
@@ -48,13 +51,15 @@ public partial class App : Application
 
         if (ApplicationLifetime is IClassicDesktopStyleApplicationLifetime desktop)
         {
-            // Avoid duplicate validations from both Avalonia and the CommunityToolkit. 
-            // More info: https://docs.avaloniaui.net/docs/guides/development-guides/data-validation#manage-validationplugins
             DisableAvaloniaDataAnnotationValidation();
-            desktop.MainWindow = new StandardCalculatorView
+
+            _standard = new StandardCalculatorView
             {
-                DataContext = new StandardCalculatorViewModel(),
+                DataContext = new StandardCalculatorViewModel()
             };
+
+            desktop.MainWindow = _standard;
+            _standard.Show();
         }
 
         base.OnFrameworkInitializationCompleted();
@@ -102,6 +107,33 @@ public partial class App : Application
             Styles.Remove(_currentTheme!);
             _currentTheme = newTheme;
             Styles.Add(_currentTheme);
+        }
+    }
+
+    public void SwitchToScientific()
+    {
+        _standard?.Hide();
+
+        if (_scientific == null)
+        {
+            _scientific = new ScientificCalculatorView
+            {
+                DataContext = new ScientificCalculatorViewModel()
+            };
+        }
+
+        ApplyTheme(isSci: true);
+        _scientific.Show();
+    }
+
+    public void SwitchToStandard()
+    {
+        _scientific?.Hide();
+
+        if (_standard != null)
+        {
+            ApplyTheme(isSci: false);
+            _standard.Show();
         }
     }
 }
