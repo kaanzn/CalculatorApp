@@ -32,32 +32,32 @@
 
       <Button Classes="sciRectangle scientific"
               Grid.Row="1" Grid.Column="0"
-              Content="("/>
+              Content="(" Command="{Binding PressOperatorCommand}" CommandParameter="("/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="1" Grid.Column="1"
-              Content=")"/>
+              Content=")" Command="{Binding PressOperatorCommand}" CommandParameter=")"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="1" Grid.Column="2"
-              Content="mc"/>
+              Content="mc" Command="{Binding MemoryClearCommand}"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="1" Grid.Column="3"
-              Content="m+"/>
+              Content="m+" Command="{Binding MemoryAddCommand}"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="1" Grid.Column="4"
-              Content="m-"/>
+              Content="m-" Command="{Binding MemorySubtractCommand}"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="1" Grid.Column="5"
-              Content="mr"/>
+              Content="mr" Command="{Binding MemoryRecallCommand}"/>
 
       <Button Classes="sciRectangle scientific"
               Grid.Row="2" Grid.Column="0"
               Content="2nd"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="2" Grid.Column="1"
-              Content="x²"/>
+              Content="x²" Command="{Binding PressPowerCommand}" CommandParameter="²"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="2" Grid.Column="2"
-              Content="x³"/>
+              Content="x³" Command="{Binding PressPowerCommand}" CommandParameter="³"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="2" Grid.Column="3"
               Content="xʸ"/>
@@ -73,54 +73,54 @@
               Content="1/x"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="3" Grid.Column="1"
-              Content="²√x"/>
+              Content="²√x" Command="{Binding PressFunctionCommand}" CommandParameter="√"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="3" Grid.Column="2"
-              Content="∛x"/>
+              Content="∛x" Command="{Binding PressFunctionCommand}" CommandParameter="∛"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="3" Grid.Column="3"
-              Content="ʸ√x"/>
+              Content="ʸ√x" Command="{Binding PressFunctionCommand}"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="3" Grid.Column="4"
-              Content="ln"/>
+              Content="ln" Command="{Binding PressFunctionCommand}" CommandParameter="ln"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="3" Grid.Column="5"
-              Content="log₁₀"/>
+              Content="log₁₀" Command="{Binding PressFunctionCommand}" CommandParameter="log₁₀"/>
 
       <Button Classes="sciRectangle scientific"
               Grid.Row="4" Grid.Column="0"
-              Content="x!"/>
+              Content="x!" Command="{Binding PressFactorialCommand}" CommandParameter="!"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="4" Grid.Column="1"
-              Content="sin"/>
+              Content="sin" Command="{Binding PressFunctionCommand}" CommandParameter="sin"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="4" Grid.Column="2"
-              Content="cos"/>
+              Content="cos" Command="{Binding PressFunctionCommand}" CommandParameter="cos"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="4" Grid.Column="3"
-              Content="tan"/>
+              Content="tan" Command="{Binding PressFunctionCommand}" CommandParameter="tan"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="4" Grid.Column="4"
-              Content="𝑒"/>
+              Content="e" Command="{Binding PressConstantCommand}" CommandParameter="e"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="4" Grid.Column="5"
               Content="EE"/>
 
       <Button Classes="sciRectangle scientific"
               Grid.Row="5" Grid.Column="0"
-              Content="Rand"/>
+              Content="Rand" Command="{Binding PressRandCommand}"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="5" Grid.Column="1"
-              Content="sinh"/>
+              Content="sinh" Command="{Binding PressFunctionCommand}" CommandParameter="sinh"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="5" Grid.Column="2"
-              Content="cosh"/>
+              Content="cosh" Command="{Binding PressFunctionCommand}" CommandParameter="cosh"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="5" Grid.Column="3"
-              Content="tanh"/>
+              Content="tanh" Command="{Binding PressFunctionCommand}" CommandParameter="tanh"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="5" Grid.Column="4"
-              Content="π"/>
+              Content="π" Command="{Binding PressConstantCommand}" CommandParameter="π"/>
       <Button Classes="sciRectangle scientific"
               Grid.Row="5" Grid.Column="5"
               Content="Rad"/>

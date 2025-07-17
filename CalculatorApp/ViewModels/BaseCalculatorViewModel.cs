@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.Linq;
 using Avalonia;
 using CalculatorApp.Models;
@@ -6,8 +7,10 @@ using CommunityToolkit.Mvvm.Input;
 
 namespace CalculatorApp.ViewModels;
 
-public abstract partial class BaseCalculatorViewModel : ViewModelBase
+public abstract partial class BaseCalculatorViewModel : ObservableObject
 {
+    protected List<char> _operators = new List<char> { '÷', '×', '−', '+' };
+
     [ObservableProperty]
     private string _display = "0";
 
@@ -16,16 +19,23 @@ public abstract partial class BaseCalculatorViewModel : ViewModelBase
     private void PressNumber(string number)
     {
         if (IsDisplayEmpty())
+        {
             Display = number;
+        }
+        else if (IsConstant(Display.Last()) || IsFactorial(Display.Last()))
+        {
+            Display = Display + "×" + number;
+        }
         else
+        {
             Display += number;
+        }
     }
 
     [RelayCommand]
     private void PressOperator(string operation)
     {
-        //You should be able to type "-" before the number so you will be able to enter negative numbers
-        if (char.IsDigit(Display.Last()))
+        if (!_operators.Contains(Display.Last()))
             Display += operation;
     }
 
@@ -78,11 +88,11 @@ public abstract partial class BaseCalculatorViewModel : ViewModelBase
     [RelayCommand]
     protected virtual void SwitchCalculator()
     {
-        
+
     }
 
-    private bool IsDisplayEmpty() => Display == "0";
-    private bool IsOperator(char c) => c == '+' || c == '−' || c == '×' || c == '÷' || c == '%';
-
-
+    protected bool IsDisplayEmpty() => Display == "0";
+    protected bool IsOperator(char c) => c == '+' || c == '−' || c == '×' || c == '÷' || c == '%';
+    protected bool IsConstant(char c) => c == 'e' || c == 'π';
+    protected bool IsFactorial(char c) => c == '!';
 }

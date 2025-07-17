@@ -9,33 +9,34 @@ public static class MathEngine
         License.iConfirmNonCommercialUse("kaano");
 
         Expression e = new Expression(Sanitize(expression));
-        double value;
 
         if (!e.checkSyntax())
             return "Error";
 
-        value = e.calculate();
+        double value = e.calculate();
 
         if (value == -0)
             value = 0;
 
         if (double.IsNaN(value))
-                return "Error";
+            return "Error";
 
-            else
-            {
-                return value % 1 == 0
-                ? ((int)value).ToString()
-                : value.ToString();
-            }
+        else
+        {
+            return value % 1 == 0
+            ? ((int)value).ToString()
+            : value.ToString();
+        }
     }
 
     private static string Sanitize(string expression)
     {
         return expression
                 .Replace("−", "-")
-                .Replace("×", "*")
-                .Replace("÷", "/")
-                .Replace(",", ".");
+                .Replace("%", "#")
+                .Replace(",", ".")
+                .Replace("²", "^2")
+                .Replace("³", "^3")
+                .Replace("log₁₀", "log10");
     }
 }
